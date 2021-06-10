@@ -44,7 +44,6 @@ class BDTest {
     @Before
     fun eraseBD() {
         getAppContext().deleteDatabase(BDHelper.DB_Name)
-        getAppContext().deleteDatabase("COVID_Project")
     }
 
     @Test
@@ -62,7 +61,7 @@ class BDTest {
         val db = getBdHelper().writableDatabase
         val hospitalTable = HospitalTable(db)
 
-        val hospital = HospitalData(name = "São Pedro", location = "Lisboa", address = "Avenida XXX", state = "Full", infected = 123, recovered = 321)
+        val hospital = HospitalData(name = "São Pedro", location = "Lisboa", address = "Avenida XXX", state = "FULL", infected = 123, recovered = 321)
         hospital.id = insertHospital(hospitalTable, hospital)
 
         assertEquals(hospital, getHospitalBD(hospitalTable, hospital.id))
@@ -75,11 +74,11 @@ class BDTest {
         val db = getBdHelper().writableDatabase
         val hospitalTable = HospitalTable(db)
 
-        val hospital = HospitalData(name = "São Pedro", location = "Lisboa", address = "Avenida XXX", state = "Full", infected = 123, recovered = 321)
+        val hospital = HospitalData(name = "Mateus", location = "Porto", address = "?", state = "?", infected = 456, recovered = 654)
         hospital.id = insertHospital(hospitalTable, hospital)
 
         hospital.address = "Avenida YYY"
-        hospital.state = "Empty"
+        hospital.state = "EMPTY"
 
         val updatedData = hospitalTable.update(
             hospital.toContentValues(),
@@ -99,7 +98,7 @@ class BDTest {
         val db = getBdHelper().writableDatabase
         val hospitalTable = HospitalTable(db)
 
-        val hospital = HospitalData(name = "São Pedro", location = "Lisboa", address = "Avenida XXX", state = "Full", infected = 123, recovered = 321)
+        val hospital = HospitalData(name = "S. Antonio", location = "Mafra", address = "Rua Grande", state = "FULL", infected = 789, recovered = 987)
         hospital.id = insertHospital(hospitalTable, hospital)
 
         val deletedData = hospitalTable.delete(
@@ -117,7 +116,7 @@ class BDTest {
         val db = getBdHelper().writableDatabase
         val hospitalTable = HospitalTable(db)
 
-        val hospital = HospitalData(name = "São Pedro", location = "Lisboa", address = "Avenida XXX", state = "Full", infected = 123, recovered = 321)
+        val hospital = HospitalData(name = "São João", location = "Alentejo", address = "Bairro das Pinhas", state = "EMPTY", infected = 0, recovered = 100)
         hospital.id = insertHospital(hospitalTable, hospital)
 
         assertEquals(hospital, getHospitalBD(hospitalTable, hospital.id))
