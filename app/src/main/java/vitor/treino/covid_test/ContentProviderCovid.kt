@@ -121,5 +121,8 @@ class ContentProviderCovid: ContentProvider() {
         private const val MULTIPLOS_ITEMS = "vnd.android.cursor.dir"
         private const val UNICO_ITEM = "vnd.android.cursor.item"
 
+        private val ENDERECO_BASE = Uri.parse("content://$AUTHORITY")
+        public val ENDERECO_HOSPITAL = Uri.withAppendedPath(ENDERECO_BASE, HOSPITAL)
+
     }
 }
