@@ -17,24 +17,26 @@ data class HospitalData(var id: Long = -1, var name: String, var location: Strin
 
         return values
     }
-    
-    fun fromCursor(cursor: Cursor): HospitalData {
-        val colId = cursor.getColumnIndex(BaseColumns._ID)
-        val colName = cursor.getColumnIndex(HospitalTable.FIELD_NAME)
-        val colLocation = cursor.getColumnIndex(HospitalTable.FIELD_LOCATION)
-        val colAddress = cursor.getColumnIndex(HospitalTable.FIELD_ADDRESS)
-        val colState = cursor.getColumnIndex(HospitalTable.FIELD_STATE)
-        val colInfected = cursor.getColumnIndex(HospitalTable.FIELD_INFECTED)
-        val colRecovered = cursor.getColumnIndex(HospitalTable.FIELD_RECOVERED)
 
-        val id = cursor.getLong(colId)
-        val name = cursor.getString(colName)
-        val location = cursor.getString(colLocation)
-        val address = cursor.getString(colAddress)
-        val state = cursor.getString(colState)
-        val infected = cursor.getLong(colInfected)
-        val recovered = cursor.getLong(colRecovered)
+    companion object{
+        fun fromCursor(cursor: Cursor): HospitalData {
+            val colId = cursor.getColumnIndex(BaseColumns._ID)
+            val colName = cursor.getColumnIndex(HospitalTable.FIELD_NAME)
+            val colLocation = cursor.getColumnIndex(HospitalTable.FIELD_LOCATION)
+            val colAddress = cursor.getColumnIndex(HospitalTable.FIELD_ADDRESS)
+            val colState = cursor.getColumnIndex(HospitalTable.FIELD_STATE)
+            val colInfected = cursor.getColumnIndex(HospitalTable.FIELD_INFECTED)
+            val colRecovered = cursor.getColumnIndex(HospitalTable.FIELD_RECOVERED)
 
-        return HospitalData(id, name, location, address, state, infected, recovered)
+            val id = cursor.getLong(colId)
+            val name = cursor.getString(colName)
+            val location = cursor.getString(colLocation)
+            val address = cursor.getString(colAddress)
+            val state = cursor.getString(colState)
+            val infected = cursor.getLong(colInfected)
+            val recovered = cursor.getLong(colRecovered)
+
+            return HospitalData(id, name, location, address, state, infected, recovered)
+        }
     }
 }

@@ -8,9 +8,7 @@ class BDHelper(context: Context?) : SQLiteOpenHelper(context, DB_Name, null, DB_
 
     override fun onCreate(db: SQLiteDatabase?){
         if (db != null) {
-            //HospitalTable(db).create()
-            //StaffTable(db).create()
-            //PatientTable(db).create()
+            HospitalTable(db).create()
         }
     }
 
@@ -18,7 +16,7 @@ class BDHelper(context: Context?) : SQLiteOpenHelper(context, DB_Name, null, DB_
     }
 
     companion object{
-        const val DB_Name = "COVID_Project"
+        const val DB_Name = "covid.db"
         const val DB_Version = 1
     }
 }
