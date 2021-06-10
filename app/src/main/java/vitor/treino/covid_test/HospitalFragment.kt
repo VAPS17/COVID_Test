@@ -1,17 +1,20 @@
 package vitor.treino.covid_test
 
+import android.database.Cursor
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.loader.app.LoaderManager
+import androidx.loader.content.Loader
 import androidx.navigation.fragment.findNavController
 import vitor.treino.covid_test.databinding.FragmentHospitalBinding
 
 /**
  * A simple [Fragment] subclass as the default destination in the navigation.
  */
-class HospitalFragment : Fragment() {
+class HospitalFragment : Fragment(), LoaderManager.LoaderCallbacks<Cursor> {
 
     private var _binding: FragmentHospitalBinding? = null
 
@@ -39,5 +42,21 @@ class HospitalFragment : Fragment() {
     override fun onDestroyView() {
         super.onDestroyView()
         _binding = null
+    }
+
+    override fun onCreateLoader(id: Int, args: Bundle?): Loader<Cursor> {
+        TODO("Not yet implemented")
+    }
+
+    override fun onLoadFinished(loader: Loader<Cursor>, data: Cursor?) {
+        TODO("Not yet implemented")
+    }
+
+    override fun onLoaderReset(loader: Loader<Cursor>) {
+        TODO("Not yet implemented")
+    }
+
+    companion object {
+        const val ID_LOADER_MANAGER_HOPSITAL = 0
     }
 }
